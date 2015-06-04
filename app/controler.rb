@@ -24,7 +24,7 @@ header = <<"EOS"
 </head>
 <body>
 <h1>Do you play tennis?</h1>
-<p class="description">それぞれのコートについて、ナイターが空いている日付を表示しています。</p>
+<p class="description">ナイターが空いている日付を表示しています。</p>
 EOS
 
 dayDisplay = '<div class="refresh"><p>' + dayFormat + '</p></div>'
