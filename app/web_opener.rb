@@ -1,16 +1,23 @@
 # coding: utf-8
 require 'capybara'
 require 'capybara/dsl'
-require 'selenium-webdriver'
+require 'capybara/poltergeist'
 require 'dotenv'
 
 require __dir__ + '/incrementer.rb'
 
 Dotenv.load
 
-Capybara.current_driver    = :selenium
+Capybara.current_driver    = :poltergeist
+Capybara.javascript_driver = :poltergeist
 Capybara.app_host          = ENV['TOP_URL']
 Capybara.default_wait_time = 20
+
+Capybara.register_driver :poltergeist do |app|
+  Capybara::Poltergeist::Driver.new(
+  app, {:timeout=>30, js_errors: false}
+  )
+end
 
 module PrivateCrawler
   class TsukubaCommunity
@@ -42,55 +49,34 @@ module PrivateCrawler
           sleep 2
         }
 
-        within_frame(1) {
-          #東光台運動公園
-          click_link 21
-          sleep 2
-          inc = PrivateCrawler::Incrementer.new
-          for num in 2..8 do
-            click_link_css('#'+num.to_s)
-            sleep 2
-            save_page __dir__ + '/../html_01/' + inc.getCount.to_s + '.html'
-            click_link 0
-            sleep 2
-          end
-          click_link 0
-          sleep 2
-        }
+        #東光台運動公園
+        getCourtInfo(21, '01')
 
-        within_frame(1) {
-          #さくら運動公園
-          click_link 33
-          sleep 2
-          inc = PrivateCrawler::Incrementer.new
-          for num in 2..8 do
-            click_link_css('#'+num.to_s)
-            sleep 2
-            save_page __dir__ + '/../html_02/' + inc.getCount.to_s + '.html'
-            click_link 0
-            sleep 2
-          end
-          click_link 0
-          sleep 2
-        }
+        #さくら運動公園
+        getCourtInfo(33, '02')
 
-        within_frame(1) {
-          #筑波北部公園
-          click_link 13
-          sleep 2
-          inc = PrivateCrawler::Incrementer.new
-          for num in 2..8 do
-            click_link_css('#'+num.to_s)
-            sleep 2
-            save_page __dir__ + '/../html_03/' + inc.getCount.to_s + '.html'
-            click_link 0
-            sleep 2
-          end
-          click_link 0
-          sleep 2
-        }
+        #筑波北部公園
+        getCourtInfo(13, '03')
 
       end
+    end
+
+
+    def getCourtInfo(courtNum, placeNum)
+      within_frame(1) {
+        click_link courtNum
+        sleep 2
+        inc = PrivateCrawler::Incrementer.new
+        for num in 2..8 do
+          click_link_css('#'+num.to_s)
+          sleep 2
+          save_page __dir__ + '/../html_'+ placeNum +'/' + inc.getCount.to_s + '.html'
+          click_link 0
+          sleep 2
+        end
+        click_link 0
+        sleep 2
+      }
     end
 
     #css-selectorを指定しての、click_linkができるメソッド

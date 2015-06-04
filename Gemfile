@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'nokogiri'
 gem 'capybara'
-gem 'selenium-webdriver'
+gem 'poltergeist'
 gem 'dotenv'
 gem 'mail'
-
