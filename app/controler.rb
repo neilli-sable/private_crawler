@@ -10,6 +10,10 @@ tc.login
 #htmlを解析/レポート出力
 reader = PrivateCrawler::HtmlReader.new
 
+#情報取得時点の日時を取得
+day = Time.now
+dayFormat = sprintf("%d月%d日 %02d:%02d に更新されました。", day.month.to_s, day.day.to_s, day.hour.to_s, day.min.to_s)
+
 header = <<"EOS"
 <!DOCTYPE html>
 <html lang="ja">
@@ -21,11 +25,9 @@ header = <<"EOS"
 <body>
 <h1>Do you play tennis?</h1>
 <p class="description">それぞれのコートについて、ナイターが空いている日付を表示しています。</p>
-<div class="refreshButton">
-<p></p>
-<button disable="true">更新</button>
-</div>
 EOS
+
+dayDisplay = '<div class="refresh"><p>' + dayFormat + '</p></div>'
 
 footer = <<"EOS"
 </body>
@@ -33,6 +35,7 @@ footer = <<"EOS"
 EOS
 
 reader.addReport header
+reader.addReport dayDisplay
 reader.addReport "<h2>東光台運動公園</h2>"
 reader.addReport "<h3>全天候コート（A）</h3><ul class=\"clearfix\">"
 reader.analysisDirectory(placeNum:"01", courtNum:"2", timeNum:"6")

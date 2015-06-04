@@ -16,7 +16,7 @@ h3 {
 }
 
 li {
-  color: #111;
+  color: #555;
   list-style-type: none;
   float: left;
   padding: 5px;
@@ -24,14 +24,16 @@ li {
 
 .description {
   display: block;
-  color: #bbb;
+  color: #555;
   font-size: 15pt;
   border-bottom: 2px #bbb solid;
   padding-bottom: 10px;
 
 }
-.refreshButton {
-  position: absolute;
+.refresh {
+  color: #555;
+  background-color: #fff;
+  position: fixed;
   top: 30px;
   right: 30px;
 
