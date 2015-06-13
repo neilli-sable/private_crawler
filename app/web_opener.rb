@@ -50,19 +50,19 @@ module PrivateCrawler
         }
 
         #東光台運動公園
-        getCourtInfo(21, '01')
+        saveCourtInfo(21, '01')
 
         #さくら運動公園
-        getCourtInfo(33, '02')
+        saveCourtInfo(33, '02')
 
         #筑波北部公園
-        getCourtInfo(13, '03')
+        saveCourtInfo(13, '03')
 
       end
     end
 
 
-    def getCourtInfo(courtNum, placeNum)
+    def saveCourtInfo(courtNum, placeNum)
       within_frame(1) {
         click_link courtNum
         sleep 2
