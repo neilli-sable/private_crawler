@@ -1,3 +1,7 @@
+body {
+  color: #333;
+}
+
 h1 {
   font-size: 40pt;
   color: #bbb;
@@ -5,18 +9,15 @@ h1 {
 
 h2 {
   font-size: 20pt;
-  color: #bbb;
 }
 
 h3 {
   font-size: 15pt;
-  color: #bbb;
   border-left: #d00 7px solid;
   padding-left: 5px;
 }
 
 li {
-  color: #555;
   list-style-type: none;
   float: left;
   padding: 5px;
@@ -24,14 +25,12 @@ li {
 
 .description {
   display: block;
-  color: #555;
   font-size: 15pt;
   border-bottom: 2px #bbb solid;
   padding-bottom: 10px;
 
 }
 .refresh {
-  color: #555;
   background-color: #fff;
   position: fixed;
   top: 30px;
