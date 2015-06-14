@@ -2,6 +2,7 @@
 require __dir__ + '/web_opener.rb'
 require __dir__ + '/html_reader.rb'
 require __dir__ + '/html_report_writer.rb'
+require __dir__ + '/daily_status.rb'
 require __dir__ + '/send_reporter.rb'
 
 #htmlを取得
@@ -93,4 +94,8 @@ reservationStatusArray.push(PrivateCrawler::ReservationStatus.new(
 ))
 
 writer = PrivateCrawler::HtmlReportWriter.new
-writer.createReport(reservationStatusArray)
+writer.createReportPerCourt(reservationStatusArray)
+
+dsFactory = PrivateCrawler::DailyStatusFactory.new
+dailyStatusArray = dsFactory.createDailyStatus(reservationStatusArray)
+writer.createReportPerDay(dailyStatusArray)
