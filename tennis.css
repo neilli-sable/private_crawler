@@ -24,6 +24,19 @@ li {
   padding: 5px;
 }
 
+footer {
+  width: 300px;
+  margin: 50px auto 0;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  color: #bbb;
+  text-decoration: none;
+}
+
 .description {
   display: block;
   font-size: 15pt;

@@ -19,6 +19,9 @@ module PrivateCrawler
 EOS
 
   FOOTER = <<"EOS"
+  <footer>
+    <p><a href="https://twitter.com/neilling">This page create by @neilling</a></p>
+  </footer>
   </body>
   </html>
 EOS
