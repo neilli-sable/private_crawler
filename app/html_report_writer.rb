@@ -10,7 +10,6 @@ module PrivateCrawler
     <html lang="ja">
     <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="tennis.css">
     <link media="only screen and (min-width:1081px)" href="tennis_css/tennis.css" type="text/css" rel="stylesheet">
     <link media="only screen and (max-width:1080px)" href="tennis_css/tennis.m.css" type="text/css" rel="stylesheet">
     <title>Do you play tennis?</title>
