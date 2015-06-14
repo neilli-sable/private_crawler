@@ -22,7 +22,7 @@ EOS
 
   FOOTER = <<"EOS"
   <footer>
-    <p><a href="https://twitter.com/neilling">This page created by @neilling</a></p>
+    <p><a href="https://twitter.com/neilling">This page is created by @neilling</a></p>
   </footer>
   </body>
   </html>
