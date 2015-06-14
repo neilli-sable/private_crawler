@@ -9,6 +9,7 @@ h1 {
 
 h2 {
   font-size: 20pt;
+  margin: 0;
 }
 
 h3 {
@@ -37,7 +38,12 @@ li {
   right: 30px;
 
 }
-
+.courtInfo {
+  margin: 0 40px 30px 20px;
+}
+.fullReserved{
+  color: #bbb;
+}
 .clearfix:after {
   content: "";
   clear: both;

@@ -32,7 +32,7 @@ module PrivateCrawler
 
         html.close
 
-        if reserve.empty? then
+        if !reserve.empty? then
           isReserved = false
         else
           isReserved = true

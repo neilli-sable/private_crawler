@@ -33,6 +33,11 @@ module PrivateCrawler
             end
           end
         end
+        ds.courtArray.each do |court|
+          if !court.isReserved
+            ds.isReserved = false
+          end
+        end
       end
       dailyStatusArray
 
@@ -41,7 +46,11 @@ module PrivateCrawler
   end
 
   class DailyStatus
-    attr_accessor :day, :courtArray
+    attr_accessor :day, :courtArray, :isReserved
+
+    def initialize
+      @isReserved = true
+    end
   end
 
   class Court

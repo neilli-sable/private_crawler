@@ -39,28 +39,30 @@ EOS
       # 情報取得時点の日時を挿入
       html += timeCaption
 
-      currentDay = "" # ループ中で参照している日時
-      currentGround = "" # ループ中で参照しているグラウンド名
-
       dailyStatus.each do |ds|
+        currentGround = "" # ループ中で参照しているグラウンド名
         html += '<h2>' + ds.day + '</h2>'
-        currentDay = ds.day
-        dayFullReserved = true
+
+        if ds.isReserved
+            html += '<div class="courtInfo"><ul class="clearfix">空きはありません</li></ul></div>'
+            next
+        end
 
         ds.courtArray.each do |dCourt|
           if (dCourt.groundName != currentGround)
-            html += currentGround == "" ? '' : '</ul>'
-            html += '<h3>' + dCourt.groundName + '</h3><ul class="clearfix">'
-            currentGround = dCourt.groundName
-            groundFullReserved = true
+            isFirstCourt = true
           end
-          if dCourt.isReserved
+          if !dCourt.isReserved
+            if isFirstCourt
+              html += currentGround == "" ? '' : '</ul></div>'
+              html += '<div class="courtInfo">'
+              html += '<h3>' + dCourt.groundName + '</h3><ul class="clearfix">'
+              currentGround = dCourt.groundName
+            end
             html += '<li>' + dCourt.courtName + '</li>'
-            dayFullReserved = false
-            groundFullReserved = false
           end
         end
-        html += '</ul>'
+        html += '</ul></div>'
       end
 
       html += FOOTER
@@ -82,15 +84,16 @@ EOS
           html += '<h2>' + rs.groundName + '</h2>'
           currentGround = rs.groundName
         end
+        html += '<div class="courtInfo">'
         html += '<h3>' + rs.courtName + '</h3><ul class="clearfix">'
 
         rs.aDayArray.each do |aDay|
-          if aDay.isReserved
+          if !aDay.isReserved
             html += '<li>' + aDay.day + '</li>'
           end
         end
 
-        html += '</ul>'
+        html += '</ul></div>'
       end
 
       html += FOOTER
