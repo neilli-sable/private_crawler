@@ -15,7 +15,7 @@ module PrivateCrawler
     </head>
     <body>
     <h1>Do you play tennis?</h1>
-    <p class="description">ナイターが空いている日付を表示しています。</p>
+    <p class="description">ナイターが空いているコートを表示しています。</p>
 EOS
 
   FOOTER = <<"EOS"
