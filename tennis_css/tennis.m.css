@@ -4,6 +4,7 @@ body {
 }
 
 h1 {
+  margin-top: 30px;
   display: block;
   width: 500px;
   font-size: 32pt;
@@ -51,9 +52,11 @@ a:active {
   background-color: #fff;
   font-size: 15pt;
   position: fixed;
-  top: 30px;
-  right: 30px;
-
+  top: 3px;
+  right: 3px;
+}
+.refresh p {
+  margin: 0;
 }
 .courtInfo {
   width: 500px;
